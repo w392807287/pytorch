@@ -23,7 +23,7 @@ def parallel_apply(modules, inputs):
             var_input = var_input[0]
         try:
             with torch.cuda.device_of(var_input):
-                output = module(input)
+                output = module(*input)
             with lock:
                 results[input] = output
         except Exception as e:
